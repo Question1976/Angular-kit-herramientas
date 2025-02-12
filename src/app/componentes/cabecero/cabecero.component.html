@@ -1,0 +1,25 @@
+<div class="container">
+    <header class="blog-header lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-dark" routerLink="/">Kit Herramientas</a>
+        </div>
+        
+      </div> 
+    </header>
+  
+    <div class="nav-scroller py-1 mb-2">
+      <nav class="nav d-flex justify-content-between">
+        <a class="p-2 link-secondary" routerLink="/">Home</a>
+        <a class="p-2 link-secondary" routerLink="/formularios">Formularios básicos</a>
+        <a class="p-2 link-secondary" routerLink="/formularios2">Formularios Reactivos</a>
+        <a class="p-2 link-secondary" routerLink="/graficos">Gráficas Google Charts</a>
+        <a class="p-2 link-secondary" routerLink="/mapas">Mapas Google Maps</a>
+        <a class="p-2 link-secondary" routerLink="/api-rest">API Rest</a>
+        <a *ngIf="booleano == false" class="p-2 link-secondary" routerLink="/login">Login</a>
+        <a *ngIf="booleano == false" class="p-2 link-secondary" routerLink="/registro">Registro</a>
+        <a *ngIf="booleano" class="p-2 link-secondary" routerLink="/restringido">Restringido</a>
+      </nav>
+    </div>
+  </div>

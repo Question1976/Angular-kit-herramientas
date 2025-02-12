@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Productos: ({{ total }} registros en total) y ({{ por_pagina}} en esta página)</h2>
+
+            <nav aria-label="breadcrum">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/api-rest">API Rest</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="['/api/productos']" [queryParams]="{page:'1'}">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Resultados para el término: <strong>{{ busqueda }}</strong></li>
+                </ol>
+            </nav>
+
+            <div>
+                <a routerLink="/api/productos/add" class="btn btn-success">Crear</a>
+                <a routerLink="/api-rest" class="btn btn-danger ms-2">Volver</a>
+            </div>
+
+            <div class="table table-responsive mt-4">
+                <table class="table table-bordered table-hover table-striped shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Categoría</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th class="text-center">Precio</th>
+                            <th class="text-center">Stock</th>
+                            <th class="text-center">Fotos</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dato of datos">
+                            <td>{{ dato.id }}</td>
+                            <td>
+                                <a [routerLink]="'/api/productos-categoria/' + dato.categoria_slug">{{ dato.categoria }}</a>
+                            </td>
+                            <td>{{ dato.nombre }}</td>
+                            <td>{{ dato.descripcion | slice:0:50 }}...</td>
+                            <td class="text-center">{{ dato.precio | number:'':'en' }}</td>
+                            <td class="text-center">{{ dato.stock }}</td>
+                            <td class="text-center">
+                                <a [routerLink]="'/api/productos/fotos/' + dato.id" title="Foto producto {{ dato.nombre }}">
+                                    <i class="fas fa-camera"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a href="/api/productos/editar/{{ dato.id }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="text-primary ms-3" (click)="eliminar(dato.id)">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Paginación -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="/api/productos?page=1">Primera</a></li>       
+
+                      <li *ngIf="page > 1" class="page-item"><a class="page-link" href="/api/productos?page={{ page - 1 }}">Anterior</a></li>
+
+                      <ng-container *ngFor="let item of paginas; let i = index">
+                        <li *ngIf="i != 0" class="page-item">
+                            <a class="page-link" href="/api/productos?page={{ item }}">{{ item }}</a>
+                        </li> 
+                      </ng-container> 
+
+                      <li *ngIf="page < links" class="page-item"><a class="page-link" href="/api/productos?page={{ page + 1 }}">Siguiente</a></li>
+
+                      <li class="page-item"><a class="page-link" href="/api/productos?page={{ links }}">Última</a></li>
+                    </ul>
+                </nav>
+
+            </div>                          
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Productos</h2>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/api-rest">API Rest</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/api/productos">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Fotos: {{ datos.nombre }}</li>
+                </ol>
+            </nav>
+
+            <hr />
+
+            <div>
+                <h3>Suba una foto</h3>
+                <form [formGroup]="formulario" #formDir="ngForm">
+                    <div class="cross-validation"
+                        [class.cross-validation-error]=" formulario.invalid && (formulario.touched || formulario.dirty)">
+
+                        <input type="hidden" formControlName="productos_id" />
+                        <div class="form-group">
+                            <label for="imagen">Foto:</label>
+                            <input class="form-control" type="file" formControlName="file"
+                                (change)="onFileChange($event)" />
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3" [disabled]="formulario.invalid"
+                        (click)="enviar()">Enviar</button>
+                </form>
+            </div>
+
+            <hr />
+
+            <div class="table-responsive">
+                <h4>Fotos: <strong>{{ datos.nombre }}</strong></h4>
+
+                <table class="table table-bordered custom-class shadow-sm mb-4">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Foto</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let foto of fotos">
+                            <td class="text-center">
+                                <img [src]="foto.foto" alt="Foto" width="200" height="200" />
+                            </td>
+                            <td class="text-center">
+                                <a class="text text-primary" (click)="eliminar(foto.id)">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.ufo-64x64 {
+    animation: ufo-64x64 1s steps(12) infinite;
+    display: block;
+    width: 64px;
+    height: 64px;
+    background-image: url(/assets/images/loading.png);
+}
+
+@keyframes ufo-64x64 {
+    from {
+        background-position: 0px 0px;
+    }
+
+    to {
+        background-position: 0px -768px;
+    }
+}

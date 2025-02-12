@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Categorías: ({{ largo }})</h2>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/api-rest">API Rest</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Categorías</li>
+                </ol>
+            </nav>
+
+            <div>
+                <a routerLink="/api/categorias/add" class="btn btn-success">Crear</a>
+                <a routerLink="/api-rest" class="btn btn-danger ms-2">Volver</a>
+            </div>
+
+            <div class="table table-responsive mt-4">
+                <table class="table table-bordered table-hover table-striped shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dato of datos">
+                            <td>{{ dato.id }}</td>
+                            <td>{{ dato.nombre }}</td>
+                            <td>
+                                <a [routerLink]="'/api/categorias/edit/' + dato.id">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="text text-primary" (click)="eliminar(dato.id)">
+                                    <i class="fas fa-trash ms-3"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

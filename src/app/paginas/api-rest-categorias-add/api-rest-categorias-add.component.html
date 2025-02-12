@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/api-rest">API Rest</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/api/categorias">Categorías</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Agregar</li>
+                </ol>
+            </nav>
+
+            <form [formGroup]="formulario" #formDir="ngForm">
+                <div [hidden]="formDir.submitted">
+    
+                    <div class="cross-validation"
+                        [class.cross-validation-error]="formulario.invalid && (formulario.touched || formulario.dirty)">
+                        <div class="form-group mt-2">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" class="form-control shadow-sm" formControlName="nombre"
+                                placeholder="Nombre" required />
+    
+                            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+    
+                                <div *ngIf="nombre.errors?.['required']">
+                                    El campo nombre es obligatorio.
+                                </div>
+                                <div *ngIf="nombre.errors?.['minlength']">
+                                    El nombre debe tener al menos 4 caracteres.
+                                </div>
+    
+                            </div>
+                        </div>    
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="btn btn-success" [disabled]="formulario.invalid"
+                        (click)="enviar()">Enviar</button>
+                </div>
+    
+            </form>
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>

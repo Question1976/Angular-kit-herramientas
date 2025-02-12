@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+
+        <div class="col-4">
+            <h2>Productos</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/api-rest">API Rest</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/api/productos">Productos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Agregar</li>
+                </ol>
+            </nav>
+
+            <form [formGroup]="formulario" #formDir="ngForm" class="mb-4">
+                <div [hidden]="formDir.submitted">
+    
+                    <div class="cross-validation"
+                        [class.cross-validation-error]="formulario.errors?.['ValidaSelect'] && formulario.invalid && (formulario.touched || formulario.dirty)">
+    
+                        <div class="form-group">
+                            <label for="categorias_id">Categorías:</label>
+                            <select formControlName="categorias_id" class="form-control">
+                                <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}
+                                </option>
+                            </select>
+                            <!-- Validaciones -->
+                            <div *ngIf="formulario.errors?.['ValidaSelectNull'] && (formulario.touched || formulario.dirty)"
+                                class="alert alert-danger">
+                                Debe indicar una categoría
+                            </div>
+                        </div>
+    
+                        <div class="form-group mt-2">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" class="form-control" formControlName="nombre"
+                                placeholder="Nombre" required />
+                            <!-- Validaciones -->    
+                            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+    
+                                <div *ngIf="nombre.errors?.['required']">
+                                    El campo nombre es obligatorio.
+                                </div>
+                                <div *ngIf="nombre.errors?.['minlength']">
+                                    El nombre debe tener al menos 4 caracteres.
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-group mt-2">
+                            <label for="descripcion">Descripción:</label>
+                            <textarea formControlName="descripcion" id="descripcion" class="form-control"
+                                placeholder="Descripción"></textarea>
+                            <!-- Validaciones -->
+                            <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+                                class="alert alert-danger">
+    
+                                <div *ngIf="descripcion.errors?.['required']">
+                                    El campo Descripción es obligatorio.
+                                </div>
+                                <div *ngIf="descripcion.errors?.['minlength']">
+                                    El Descripción debe tener al menos 4 caracteres.
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-group mt-2">
+                            <label for="precio">Precio:</label>
+                            <input type="text" id="precio" class="form-control" formControlName="precio" placeholder="Precio" (keypress)="validaNumeros($event)" required />
+                            <!-- Validaciones -->
+                            <div *ngIf="precio.invalid && (nombre.dirty || precio.touched)" class="alert alert-danger">
+    
+                                <div *ngIf="precio.errors?.['required']">
+                                    El campo Precio es obligatorio.
+                                </div>
+                                <div *ngIf="precio.errors?.['minlength']">
+                                    El Precio debe tener al menos 3 caracteres.
+                                </div>
+                                <div *ngIf="precio.errors?.['pattern']">
+                                    El Precio debe tener sólo números
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-group mt-2">
+                            <label for="precio">Stock:</label>
+                            <input type="text" id="stock" class="form-control" formControlName="stock" placeholder="Stock"
+                                (keypress)="validaNumeros($event)" required />
+                            <!-- Validaciones -->
+                            <div *ngIf="stock.invalid && (nombre.dirty || stock.touched)" class="alert alert-danger">
+    
+                                <div *ngIf="stock.errors?.['required']">
+                                    El campo Stock es obligatorio.
+                                </div>
+                                <div *ngIf="stock.errors?.['pattern']">
+                                    El Stock debe tener sólo números
+                                </div>
+    
+                            </div>
+                        </div>    
+    
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-success" [disabled]="formulario.invalid"
+                        (click)="enviar()">Enviar</button>
+                </div>
+    
+            </form>
+        </div>
+
+        <div class="col-4"></div>
+    </div>
+</div>

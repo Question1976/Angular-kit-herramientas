@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h4 class="text-center">Formulario básico con NgModel</h4>
+
+            <form name="form" id="form" (submit)="enviar()" #formulario="ngForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" [(ngModel)]="usuario.nombre" class="form-control shadow-sm" #nombre="ngModel" required="true" />
+                    <!-- Validación -->
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger shadow-sm">
+                        <div *ngIf="nombre.errors">
+                            El campo nombre es obligatorio
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="correo">E-Mail:</label>
+                    <input type="text" name="correo" [(ngModel)]="usuario.correo" class="form-control shadow-sm" #correo="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="true" />
+                    <!-- Validación -->
+                    <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="alert alert-danger shadow-sm">
+                        <div *ngIf="correo.errors">
+                            El campo correo es obligatorio
+                        </div>
+                        <div *ngIf="!correo.valid && correo.touched">
+                            El E-Mail ingresado no es válido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" name="telefono" [(ngModel)]="usuario.telefono" class="form-control shadow-sm" #telefono="ngModel" required="true"/>
+                    <!-- Validación -->
+                    <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="alert alert-danger shadow-sm">
+                        <div *ngIf="telefono.errors">
+                            El campo teléfono es obligatorio
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" name="direccion" [(ngModel)]="usuario.direccion" class="form-control shadow-sm" #direccion="ngModel" required="true" />
+                    <!-- Validación -->
+                    <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="alert alert-danger shadow-sm">
+                        <div *ngIf="direccion.errors">
+                            El campo dirección es obligatorio
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="pais">País:</label>
+                    <select name="pais" class="form-control" [(ngModel)]="usuario.pais">
+                        <option *ngFor="let pais of paises" value="{{pais.nombre}}">
+                            {{pais.nombre}}
+                        </option>
+                    </select>    
+                </div>                
+                <hr>
+                <div class="mb-4">
+                    <input type="submit" value="Enviar" [disabled]="!formulario.form.valid" class="btn btn-success">
+                    <input type="reset" value="Limpiar" class="btn btn-warning ms-2">
+                </div>
+            </form>
+            <div class="form-group mb-4">
+                <label for="direccion">Acepte los términos y condiciones</label>
+                <input type="checkbox" (change)="seleccionaCheck($event)" [(ngModel)]="checkboxMarca" class="ms-2" />
+            </div>
+        </div>
+        <div class="col-8">
+            <h4 class="text-center">Usuarios registrados: ({{users.length}})</h4>
+
+            <table class="table table-bordered shadow-sm mt-4">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>E-Mail</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>País</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                         <td>{{user.nombre}}</td>
+                         <td>{{user.correo}}</td>
+                         <td>{{user.telefono}}</td>
+                         <td>{{user.direccion}}</td>
+                         <td>{{user.pais}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
