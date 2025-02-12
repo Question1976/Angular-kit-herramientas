@@ -7,10 +7,24 @@ Página web SPA Angular con el kit de herramientas necesarias para poder trabaja
 - Formularios
 - Formularios Reactivos
 - Google Maps
+- Gráficas con Google Charts
 - Consumo de API REST
 - Operaciones CRUD con varias tablas
 - Login
-- Registro de usuarios 
+- Registro de usuarios
+
+  ![1](https://github.com/user-attachments/assets/1fd7b144-99ed-462c-ab3e-b630e71476c1)
+  ![2](https://github.com/user-attachments/assets/d5d19326-2bec-4d3d-b2b0-0cda5d138e4d)
+  ![3](https://github.com/user-attachments/assets/f014bcf5-cc60-4fbb-aae7-ffb2d2fc199b)
+  ![4](https://github.com/user-attachments/assets/3acb2135-d8ce-4319-a635-9d7c0bac1f42)  
+  ![5](https://github.com/user-attachments/assets/39362c26-9767-4f4e-a3f2-d1a570153b3b)  
+  ![6](https://github.com/user-attachments/assets/994ea854-de08-4232-b4b4-eea9190a046d)
+  ![7](https://github.com/user-attachments/assets/2278598b-e950-4660-8e4a-817a44be4f7b)
+  ![8](https://github.com/user-attachments/assets/f6c8cbb6-3bc1-4d64-a349-b7146fa7e6ae)
+  ![9](https://github.com/user-attachments/assets/ca946306-7941-40ec-9238-0fe80b89d1be)
+  ![10](https://github.com/user-attachments/assets/cfbf9412-8579-4f5a-a19d-41c60b834c8b)
+  ![11](https://github.com/user-attachments/assets/dbd21fc5-b0b6-4e06-92dd-8147621423cb)
+
 
 ## Development server
 
