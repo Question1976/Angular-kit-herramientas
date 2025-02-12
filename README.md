@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.10.
 
+Página web SPA Angular con el kit de herramientas necesarias para poder trabajar con el framework:
+- Navegación
+- Formularios
+- Formularios Reactivos
+- Google Maps
+- Consumo de API REST
+- Operaciones CRUD con varias tablas
+- Login
+- Registro de usuarios 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
