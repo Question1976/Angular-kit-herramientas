@@ -4,8 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Página web SPA Angular con el kit de herramientas necesarias para poder trabajar con el framework:
 - Navegación
-- Formularios
-- Formularios Reactivos
+- Formularios y validaciones
+- Formularios Reactivos y validaciones
 - Google Maps
 - Gráficas con Google Charts
 - Consumo de API REST
